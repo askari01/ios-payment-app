@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		6B1221562EFD4479001117ED /* Payment-App-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Payment-App-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B1221562EFD4479001117ED /* PaymentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaymentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6B1221582EFD4479001117ED /* Payment-App-iOS */ = {
+		6B1221582EFD4479001117ED /* PaymentApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Payment-App-iOS";
+			path = PaymentApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		6B12214D2EFD4479001117ED = {
 			isa = PBXGroup;
 			children = (
-				6B1221582EFD4479001117ED /* Payment-App-iOS */,
+				6B1221582EFD4479001117ED /* PaymentApp */,
 				6B1221572EFD4479001117ED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		6B1221572EFD4479001117ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B1221562EFD4479001117ED /* Payment-App-iOS.app */,
+				6B1221562EFD4479001117ED /* PaymentApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B1221552EFD4479001117ED /* Payment-App-iOS */ = {
+		6B1221552EFD4479001117ED /* PaymentApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B1221612EFD447A001117ED /* Build configuration list for PBXNativeTarget "Payment-App-iOS" */;
+			buildConfigurationList = 6B1221612EFD447A001117ED /* Build configuration list for PBXNativeTarget "PaymentApp" */;
 			buildPhases = (
 				6B1221522EFD4479001117ED /* Sources */,
 				6B1221532EFD4479001117ED /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6B1221582EFD4479001117ED /* Payment-App-iOS */,
+				6B1221582EFD4479001117ED /* PaymentApp */,
 			);
-			name = "Payment-App-iOS";
+			name = PaymentApp;
 			packageProductDependencies = (
 			);
 			productName = "Payment-App-iOS";
-			productReference = 6B1221562EFD4479001117ED /* Payment-App-iOS.app */;
+			productReference = 6B1221562EFD4479001117ED /* PaymentApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6B1221512EFD4479001117ED /* Build configuration list for PBXProject "Payment-App-iOS" */;
+			buildConfigurationList = 6B1221512EFD4479001117ED /* Build configuration list for PBXProject "PaymentApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B1221552EFD4479001117ED /* Payment-App-iOS */,
+				6B1221552EFD4479001117ED /* PaymentApp */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.askari.Payment-App-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.askari.PaymentApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -298,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.askari.Payment-App-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.askari.PaymentApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B1221512EFD4479001117ED /* Build configuration list for PBXProject "Payment-App-iOS" */ = {
+		6B1221512EFD4479001117ED /* Build configuration list for PBXProject "PaymentApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B12215F2EFD447A001117ED /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B1221612EFD447A001117ED /* Build configuration list for PBXNativeTarget "Payment-App-iOS" */ = {
+		6B1221612EFD447A001117ED /* Build configuration list for PBXNativeTarget "PaymentApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B1221622EFD447A001117ED /* Debug */,
