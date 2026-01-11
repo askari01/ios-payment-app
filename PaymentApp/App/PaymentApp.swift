@@ -7,6 +7,12 @@
 import SwiftUI
 import PaymentSDK
 
+
+let username = "ij@technologies.dk"
+let password = "6#Nf2XE#wwAvAN4qL"
+let baseURLString = "https://testgateway.altapaysecure.com/"
+
+
 @main
 struct PaymentApp: App {
 
@@ -16,10 +22,15 @@ struct PaymentApp: App {
     private var svm: SelectedPaymentMethodViewModel
 
     init() {
+        
+        guard let baseURL = URL(string: baseURLString) else {
+            fatalError("Invalid base URL: \(baseURLString)")
+        }
+        
         self.client = PaymentClient(
-            username: "ij@technologies.dk",
-            password: "6#Nf2XE#wwAvAN4qL",
-            baseURL: URL(string: "https://testgateway.altapaysecure.com/")!
+            username: username,
+            password: password,
+            baseURL: baseURL
         )
 
         cvm = CheckoutViewModel(client: client)

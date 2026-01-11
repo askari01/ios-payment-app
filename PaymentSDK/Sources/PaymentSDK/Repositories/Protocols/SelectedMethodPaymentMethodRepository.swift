@@ -5,7 +5,7 @@
 //  Created by Farrukh Askari on 30/12/2025.
 //
 
-protocol SelectedPaymentMethodRepository {
+protocol SelectedPaymentMethodRepository: Sendable {
     func initiatePayment(
         paymentInitiationRequest: PaymentInitiationRequest,
         token: String

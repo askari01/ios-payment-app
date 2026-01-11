@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CredentialStore {
+protocol CredentialStore: Sendable {
     var username: String { get }
     var password: String { get }
 }

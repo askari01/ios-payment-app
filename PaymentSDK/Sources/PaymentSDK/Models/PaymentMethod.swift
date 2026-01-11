@@ -47,7 +47,7 @@ public struct PaymentInitiationResponse: Decodable {
     public let url: String
 }
 
-public struct Configuration: Codable {
+public struct Configuration: Codable, Sendable {
     public let paymentType: String
     public let paymentDisplayType: String?
     public let bodyFormat: String
@@ -65,7 +65,7 @@ public struct Configuration: Codable {
     }
 }
 
-public struct ConfigurationResponse: Decodable {
+public struct ConfigurationResponse: Decodable, Sendable {
     public let paymentType: String
     public let paymentDisplayType: String
     public let autoCapture: Bool

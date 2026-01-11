@@ -27,7 +27,6 @@ final class PaymentMethodsViewModel {
 
         do {
             methods = try await client.getPaymentMethods(sessionId: sessionId)
-            print(methods)
         } catch {
             self.error = error.localizedDescription
         }

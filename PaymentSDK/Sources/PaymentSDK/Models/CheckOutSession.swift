@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CheckoutSessionResponse: Decodable {
+public struct CheckoutSessionResponse: Decodable, Sendable {
     public let sessionId: String
     public let context: Context
     public let order: Order
@@ -15,8 +15,8 @@ public struct CheckoutSessionResponse: Decodable {
     public let configuration: ConfigurationResponse
 }
 
-public struct Context: Decodable {
+public struct Context: Decodable, Sendable {
     public let browser: Browser
 }
 
-public struct Browser: Decodable {}
+public struct Browser: Decodable, Sendable {}

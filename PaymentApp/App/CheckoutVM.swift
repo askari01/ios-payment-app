@@ -70,7 +70,6 @@ final class CheckoutViewModel {
                 order: order,
                 configuration: config
             )
-            print(response.sessionId)
             sessionId = response.sessionId
 
         } catch {

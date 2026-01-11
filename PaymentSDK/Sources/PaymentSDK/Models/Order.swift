@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CheckoutRequest: Codable {
+public struct CheckoutRequest: Codable, Sendable {
     public let order: Order
     //    let callbacks: Callbacks
     public let configuration: Configuration
@@ -18,7 +18,7 @@ public struct CheckoutRequest: Codable {
     }
 }
 
-public struct Order: Codable {
+public struct Order: Codable, Sendable {
     public let orderId: String
     public let amount: Amount
     public let orderLines: [OrderLine]
@@ -34,7 +34,7 @@ public struct Order: Codable {
     }
 }
 
-public struct Amount: Codable {
+public struct Amount: Codable, Sendable {
     public let value: Double
     public let currency: String
     
@@ -44,7 +44,7 @@ public struct Amount: Codable {
     }
 }
 
-public struct OrderLine: Codable {
+public struct OrderLine: Codable, Sendable {
     public let itemId: String
     public let description: String
     public let quantity: Int
@@ -58,7 +58,7 @@ public struct OrderLine: Codable {
     }
 }
 
-public struct Customer: Codable {
+public struct Customer: Codable, Sendable {
     public let firstName: String
     public let lastName: String
     public let email: String
@@ -74,7 +74,7 @@ public struct Customer: Codable {
     }
 }
 
-public struct Address: Codable {
+public struct Address: Codable, Sendable {
     public let street: String
     public let city: String
     public let country: String

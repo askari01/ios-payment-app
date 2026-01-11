@@ -12,12 +12,12 @@ final class CheckoutRepositoryImpl: CheckoutRepository {
     private let api: APIClient
     private let baseURL: URL
 
-    init(api: APIClient, baseURL: URL) {
+    nonisolated init(api: APIClient, baseURL: URL) {
         self.api = api
         self.baseURL = baseURL
     }
 
-    func createSession(
+    nonisolated func createSession(
         request: CheckoutRequest,
         token: String
     ) async throws -> CheckoutSessionResponse {

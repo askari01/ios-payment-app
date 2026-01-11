@@ -21,10 +21,14 @@ final class SelectedPaymentMethodViewModel {
         method: PaymentMethod,
         sessionId: String
     ) async {
+        guard !sessionId.isEmpty else {
+            print("Payment initiation failed: Missing session ID")
+            return
+        }
+        
         do {
-            if let url = try await client.initiatePayment(methodId: method.id, sessionId: sessionId) {
-                redirectURL = url
-            }
+            let url = try await client.initiatePayment(methodId: method.id, sessionId: sessionId)
+            redirectURL = url
         } catch {
             print("Payment initiation failed:", error)
         }
