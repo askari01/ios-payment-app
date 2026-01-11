@@ -7,12 +7,13 @@
 
 import SwiftUI
 import WebKit
+import Observation
+import PaymentSDK
 
 struct ContentView: View {
 
     @State private var showWebView = false
     @State private var page = WebPage()
-    @State var avm: AuthViewModel
     @State var cvm: CheckoutViewModel
     @State var pvm: PaymentMethodsViewModel
     @State var spvm: SelectedPaymentMethodViewModel
@@ -24,8 +25,7 @@ struct ContentView: View {
                 Task {
                     await spvm
                         .onMethodSelected(method: method,
-                                          sessionId: cvm.sessionId!,
-                                          token: avm.token!)
+                                          sessionId: cvm.sessionId!)
                 }
             } label: {
                 row(method)
@@ -51,9 +51,10 @@ struct ContentView: View {
             }
         )
         .task {
-            await avm.authenticate()
-            await cvm.startCheckout(token: avm.token!)
-            await pvm.load(sessionId: cvm.sessionId!, token: avm.token!)
+            await cvm.startCheckout()
+            if let sessionId = cvm.sessionId {
+                await pvm.load(sessionId: sessionId)
+            }
         }
         .padding()
     }
@@ -92,23 +93,15 @@ private func row(_ method: PaymentMethod) -> some View {
 
 
 #Preview {
-    struct PreviewCredentialStore: CredentialStore {
-        var username: String { "ij@technologies.dk" }
-        var password: String { "6#Nf2XE#wwAvAN4qL" }
-    }
-
-    let client = URLSessionAPIClient()
-    let credentialStore = PreviewCredentialStore()
-
-    let authRepo = AuthRepositoryImpl(api: client, credentialStore: credentialStore)
-    let checkoutRepo = CheckoutRepositoryImpl(api: client, credentialStore: credentialStore)
-    let paymentMethodRepo = PaymentMethodRepositoryImpl(api: client, credentialStore: credentialStore)
-    let selectedPaymentMethodRepo = SelectedPaymentMethodRepositoryImpl(api: client, credentialStore: credentialStore)
-
-    let avm = AuthViewModel(repo: authRepo)
-    let cvm = CheckoutViewModel(checkoutRepo: checkoutRepo)
-    let pvm = PaymentMethodsViewModel(repo: paymentMethodRepo)
-    let svm = SelectedPaymentMethodViewModel(repo: selectedPaymentMethodRepo)
-
-    return ContentView(avm: avm, cvm: cvm, pvm: pvm, spvm: svm)
+    let client = PaymentClient(
+        username: "ij@technologies.dk",
+        password: "6#Nf2XE#wwAvAN4qL",
+        baseURL: URL(string: "https://testgateway.altapaysecure.com/")!
+    )
+    
+    let cvm = CheckoutViewModel(client: client)
+    let pvm = PaymentMethodsViewModel(client: client)
+    let svm = SelectedPaymentMethodViewModel(client: client)
+    
+    return ContentView(cvm: cvm, pvm: pvm, spvm: svm)
 }

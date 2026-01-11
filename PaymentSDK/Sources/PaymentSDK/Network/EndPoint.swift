@@ -20,21 +20,23 @@ struct Endpoint {
 }
 
 enum APIConstants {
-    static let baseURL = "https://testgateway.altapaysecure.com/"
-    static let timeout: TimeInterval = 30
     static let version = "v1"
-    static let urlPath = {
-        baseURL+"checkout/\(version)/api"
+    
+    static func path(for baseURL: URL) -> String {
+        let urlString = baseURL.absoluteString
+        // Ensure trailing slash
+        let base = urlString.hasSuffix("/") ? urlString : urlString + "/"
+        return base + "checkout/\(version)/api"
     }
 }
 
 enum AuthEndpoints {
     static func authenticate(
-        authorization: String,
+        baseURL: URL,
+        authorization: String
     ) -> Endpoint {
         Endpoint(
-            url: URL(string:
-                        APIConstants.urlPath()+"/authenticate")!,
+            url: URL(string: APIConstants.path(for: baseURL) + "/authenticate")!,
             method: .post,
             headers: [
                 "Authorization": authorization
@@ -45,14 +47,15 @@ enum AuthEndpoints {
 }
 
 enum CheckoutEndpoints {
-
+    
     static func createSession(
+        baseURL: URL,
         body: CheckoutRequest,
-        authorization: String,
+        authorization: String
     ) -> Endpoint {
-
+        
         Endpoint(
-            url: URL(string: APIConstants.urlPath()+"/session")!,
+            url: URL(string: APIConstants.path(for: baseURL) + "/session")!,
             method: .post,
             headers: [
                 "Content-Type": "application/json",
@@ -64,16 +67,16 @@ enum CheckoutEndpoints {
 }
 
 enum PaymentMethodEndpoints {
-
+    
     static func list(
+        baseURL: URL,
         sessionId: String,
-        token: String,
+        token: String
     ) -> Endpoint {
-
+        
         Endpoint(
             url: URL(
-                string:
-                    APIConstants.urlPath()+"/session/\(sessionId)/payment-methods"
+                string: APIConstants.path(for: baseURL) + "/session/\(sessionId)/payment-methods"
             )!,
             method: .get,
             headers: [
@@ -85,16 +88,16 @@ enum PaymentMethodEndpoints {
 }
 
 enum SelectedPaymentMethodEndpoints {
-
+    
     static func initiatePayment(
+        baseURL: URL,
         body: PaymentInitiationRequest,
-        token: String,
+        token: String
     ) -> Endpoint {
-
+        
         Endpoint(
             url: URL(
-                string:
-                    APIConstants.urlPath()+"/payment"
+                string: APIConstants.path(for: baseURL) + "/payment"
             )!,
             method: .post,
             headers: [

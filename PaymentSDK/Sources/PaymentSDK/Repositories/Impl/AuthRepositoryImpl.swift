@@ -11,10 +11,12 @@ final class AuthRepositoryImpl: AuthRepository {
 
     private let api: APIClient
     private let credentialStore: CredentialStore
+    private let baseURL: URL
 
-    init(api: APIClient, credentialStore: CredentialStore) {
+    init(api: APIClient, credentialStore: CredentialStore, baseURL: URL) {
         self.api = api
         self.credentialStore = credentialStore
+        self.baseURL = baseURL
     }
 
     func authenticate() async throws -> AuthResponse {
@@ -25,10 +27,10 @@ final class AuthRepositoryImpl: AuthRepository {
 
         let response: AuthResponse = try await api.request(
             AuthEndpoints.authenticate(
+                baseURL: baseURL,
                 authorization: authHeader
             )
         )
         return response
     }
 }
-

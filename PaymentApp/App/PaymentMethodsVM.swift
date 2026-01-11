@@ -6,26 +6,27 @@
 //
 
 import SwiftUI
+import PaymentSDK
 
 @Observable
 final class PaymentMethodsViewModel {
 
-    private let repo: PaymentMethodRepository
+    private let client: PaymentClient
 
     var methods: [PaymentMethod] = []
     var isLoading = false
     var error: String?
 
-    init(repo: PaymentMethodRepository) {
-        self.repo = repo
+    init(client: PaymentClient) {
+        self.client = client
     }
 
-    func load(sessionId: String, token: String) async {
+    func load(sessionId: String) async {
         isLoading = true
         defer { isLoading = false }
 
         do {
-            methods = try await repo.fetchMethods(sessionId: sessionId, token: token)
+            methods = try await client.getPaymentMethods(sessionId: sessionId)
             print(methods)
         } catch {
             self.error = error.localizedDescription

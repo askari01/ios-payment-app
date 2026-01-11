@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6B4740672F13ACA600D2C2F6 /* PaymentSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6B4740662F13ACA600D2C2F6 /* PaymentSDK */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6B1221562EFD4479001117ED /* PaymentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaymentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B4740672F13ACA600D2C2F6 /* PaymentSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = PaymentApp;
 			packageProductDependencies = (
+				6B4740662F13ACA600D2C2F6 /* PaymentSDK */,
 			);
 			productName = "Payment-App-iOS";
 			productReference = 6B1221562EFD4479001117ED /* PaymentApp.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 6B12214D2EFD4479001117ED;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6B4740652F13ACA600D2C2F6 /* XCLocalSwiftPackageReference "PaymentSDK" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6B1221572EFD4479001117ED /* Products */;
 			projectDirPath = "";
@@ -332,6 +341,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6B4740652F13ACA600D2C2F6 /* XCLocalSwiftPackageReference "PaymentSDK" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = PaymentSDK;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B4740662F13ACA600D2C2F6 /* PaymentSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PaymentSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6B12214E2EFD4479001117ED /* Project object */;
 }

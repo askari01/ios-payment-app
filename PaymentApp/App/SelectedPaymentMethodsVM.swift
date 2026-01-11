@@ -6,31 +6,23 @@
 //
 
 import SwiftUI
+import PaymentSDK
 
 @Observable
 final class SelectedPaymentMethodViewModel {
-    private let repo: SelectedPaymentMethodRepository
+    private let client: PaymentClient
     var redirectURL: URL?
 
-    init(repo: SelectedPaymentMethodRepository) {
-        self.repo = repo
+    init(client: PaymentClient) {
+        self.client = client
     }
 
     func onMethodSelected(
         method: PaymentMethod,
-        sessionId: String,
-        token: String
+        sessionId: String
     ) async {
-        let paymentInitiationRequest = PaymentInitiationRequest(
-            paymentMethodId: method.id,
-            sessionId: sessionId
-        )
         do {
-            let response = try await repo.initiatePayment(
-                paymentInitiationRequest: paymentInitiationRequest,
-                token: token,
-            )
-            if let url = URL(string: response) {
+            if let url = try await client.initiatePayment(methodId: method.id, sessionId: sessionId) {
                 redirectURL = url
             }
         } catch {

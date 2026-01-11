@@ -10,11 +10,11 @@ import Foundation
 final class CheckoutRepositoryImpl: CheckoutRepository {
 
     private let api: APIClient
-    private let credentialStore: CredentialStore
+    private let baseURL: URL
 
-    init(api: APIClient, credentialStore: CredentialStore) {
+    init(api: APIClient, baseURL: URL) {
         self.api = api
-        self.credentialStore = credentialStore
+        self.baseURL = baseURL
     }
 
     func createSession(
@@ -24,6 +24,7 @@ final class CheckoutRepositoryImpl: CheckoutRepository {
 
         try await api.request(
             CheckoutEndpoints.createSession(
+                baseURL: baseURL,
                 body: request,
                 authorization: "Bearer \(token)"
             )
