@@ -52,7 +52,6 @@ final class CheckoutViewModel {
             
             let config = Configuration(
                 paymentType: "PAYMENT",
-                paymentDisplayType: "REDIRECT",
                 bodyFormat: "JSON",
                 autoCapture: false,
                 country: "DK",
