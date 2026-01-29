@@ -1,10 +1,3 @@
-//
-//  PaymentMethod.swift
-//  PaymentSDK
-//
-//  Created by Farrukh Askari on 30/12/2025.
-//
-
 import Foundation
 
 public struct PaymentMethod: Decodable, Identifiable {

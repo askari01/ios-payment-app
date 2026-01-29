@@ -1,10 +1,3 @@
-//
-//  PaymentWebView.swift
-//  PaymentSDK
-//
-//  Created for PaymentSDK
-//
-
 import SwiftUI
 import WebKit
 import Observation

@@ -1,10 +1,3 @@
-//
-//  BasicAuth.swift
-//  PaymentApp
-//
-//  Created by Farrukh Askari on 30/12/2025.
-//
-
 import Foundation
 
 protocol CredentialStore: Sendable {

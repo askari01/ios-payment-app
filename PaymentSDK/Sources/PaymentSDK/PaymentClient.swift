@@ -1,10 +1,3 @@
-//
-//  PaymentClient.swift
-//  PaymentSDK
-//
-//  Created by Farrukh Askari on 11/01/2026.
-//
-
 import Foundation
 
 /// Main client for payment operations.
@@ -48,12 +41,19 @@ public actor PaymentClient {
     /// Creates a new checkout session.
     /// - Parameters:
     ///   - order: Order details including items, customer, and amount
+    ///   - callbacks: Callbacks details including redirect, success, and failure...
     ///   - configuration: Payment configuration (type, country, language, etc.)
     /// - Returns: Checkout session response containing session ID
     /// - Throws: `PaymentSDKError` if the operation fails
-    public func startCheckout(order: Order, configuration: Configuration) async throws -> CheckoutSessionResponse {
+    public func startCheckout(order: Order,
+                              callBacks: Callbacks,
+                              configuration: Configuration) async throws -> CheckoutSessionResponse {
         let token = try await ensureToken()
-        let request = CheckoutRequest(order: order, configuration: configuration)
+        let request = CheckoutRequest(
+            order: order,
+            callBacks: callBacks,
+            configuration: configuration
+        )
         return try await Task.detached {
                 try await self.checkoutRepo.createSession(request: request, token: token)
             } .value

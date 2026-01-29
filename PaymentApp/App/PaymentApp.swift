@@ -1,9 +1,3 @@
-//
-//  PaymentApp.swift
-//
-//  Created by Farrukh Askari on 25/12/2025.
-//
-
 import SwiftUI
 import PaymentSDK
 
